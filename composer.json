@@ -1,0 +1,35 @@
+{
+    "name": "ykuadrat/datatable-builder",
+    "description": "Datatable builder based on data from yajra/datatable",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yasser",
+            "email": "yassersultan1999@gmail.com"
+        }
+    ],
+    "require": {
+        "yajra/laravel-datatables-oracle": "8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "YKuadrat\\DatatableBuilder\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "YKuadrat\\DatatableBuilder\\DatatableBuilderProvider"
+            ],
+            "aliases": {
+                "DatatableBuilderHelper": "YKuadrat\\DatatableBuilder\\Helpers\\DatatableBuilderHelper"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
