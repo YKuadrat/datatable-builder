@@ -13,10 +13,10 @@
 {{-- <link href="{{ asset('assets/theme/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" /> --}}
 {{-- <script src="{{ asset('assets/theme/vendors/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script> --}}
 
-@section('datatable-section')
-<link rel="stylesheet" type="text/css" href="{{ asset('vendor/form-builder/plugins/datatable/dataTables.bootstrap4.min.css') }}">
-<script type="text/javascript" src="{{ asset('vendor/form-builder/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/form-builder/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
+@section('datatable-resource')
+<link rel="stylesheet" type="text/css" href="{{ asset('vendor/datatable-builder/plugins/datatable/dataTables.bootstrap4.min.css') }}">
+<script type="text/javascript" src="{{ asset('vendor/datatable-builder/plugins/datatable/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/datatable-builder/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
 @endsection
 
 <script type="text/javascript">

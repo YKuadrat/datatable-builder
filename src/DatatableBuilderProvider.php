@@ -41,7 +41,7 @@ class DatatableBuilderProvider extends ServiceProvider
     private function publishAssets()
     {
         $this->publishes([
-            $this->packagePath('resources/assets') => public_path('vendor/datable-builder'),
+            $this->packagePath('resources/assets') => public_path('vendor/datatable-builder'),
         ], 'assets');
     }
 

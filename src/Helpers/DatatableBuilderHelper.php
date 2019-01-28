@@ -23,7 +23,7 @@ class DatatableBuilderHelper
 
 	private static function setupConfig($source, $config)
 	{
-		$defaultConfig = config('datatables-view');
+		$defaultConfig = config('datatable-builder');
 		$data = array_merge_recursive($defaultConfig, $config);
 		$data['source'] = $source;
 
@@ -56,7 +56,7 @@ class DatatableBuilderHelper
 
 	public static function button($button, $url = '#')
 	{
-		$buttonTemplates = config('datatables-view')['buttonTemplates'];
+		$buttonTemplates = config('datatable-builder')['buttonTemplates'];
 
 		if (is_array($button)) {
 			$stringButton = '';
