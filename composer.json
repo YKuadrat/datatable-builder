@@ -1,5 +1,5 @@
 {
-    "name": "ykuadrat/datatable-builder",
+    "name": "ykuadrat/laravel-datatable-builder",
     "description": "Datatable builder based on data from yajra/datatable",
     "type": "library",
     "license": "MIT",
