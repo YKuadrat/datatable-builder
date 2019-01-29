@@ -54,7 +54,7 @@
 		// FILTERS PARAMETER
 		dtOptions.ajax.data = {}
 		dtOptions.ajax.data.filters = {}
-		@foreach ($filters as $field => $val)
+		@foreach ($filters ?? [] as $field => $val)
 			dtOptions.ajax.data.filters.{{$field}} = {!! $val !!}.val()
 			{!! $val !!}.on('change, keyup', function(event) {
 				dtOptions.ajax.data.filters.{{$field}} = $(this).val()
