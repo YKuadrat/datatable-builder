@@ -55,10 +55,15 @@
 		dtOptions.ajax.data = {}
 		dtOptions.ajax.data.filters = {}
 		@foreach ($filters ?? [] as $field => $val)
-			dtOptions.ajax.data.filters.{{$field}} = {!! $val !!}.val()
-			{!! $val !!}.on('change, keyup', function(event) {
-				dtOptions.ajax.data.filters.{{$field}} = $(this).val()
-			});
+
+			dtOptions.ajax.data.filters.{{$field}} = {!! $val !!}
+			@if (ends_with($val, '.val()' ))
+				<?php $el = str_replace('.val()', '', $val) ?>
+				{!! $el !!}.on('change', function(event) {
+					dtOptions.ajax.data.filters.{{$field}} = $(this).val()
+				});
+			@endif
+
 		@endforeach
 
 	@else
