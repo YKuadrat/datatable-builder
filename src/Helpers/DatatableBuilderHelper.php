@@ -24,8 +24,9 @@ class DatatableBuilderHelper
 	private static function setupConfig($source, $config)
 	{
 		$defaultConfig = config('datatable-builder');
-		$data = array_merge_recursive($defaultConfig, $config);
 		$data['source'] = $source;
+		$data['elOptions'] = array_merge($defaultConfig['elOptions'], $config['elOptions'] ?? []);
+		$data['pluginOptions'] = array_merge($defaultConfig['pluginOptions'], $config['pluginOptions'] ?? []);
 
 		$data['sourceByAjax'] = true; 
 		if ($source instanceof Collection) {
