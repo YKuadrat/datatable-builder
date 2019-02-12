@@ -46,7 +46,7 @@ class DatatableBuilderHelper
 		$data['headerColumns'] = [];
 		$data['attributeColumns'] = [];
 		foreach ($columns as $column) {
-			$data['headerColumns'][] = strtolower(is_array($column) ? $column['label'] : $column);
+			$data['headerColumns'][] = str_replace('.', '_', strtolower(is_array($column) ? $column['label'] : $column));
 			$data['attributeColumns'][] = strtolower(is_array($column) ? $column['attribute'] : $column);
 		}
 
@@ -61,8 +61,18 @@ class DatatableBuilderHelper
 
 		if (is_array($button)) {
 			$stringButton = '';
-			foreach ($button as $buttonName => $url) {
-				$stringButton .= str_replace('<<url>>', $url, $buttonTemplates[$buttonName]);
+			foreach ($button as $buttonName => $param) {
+				$curBtn = $buttonTemplates[$buttonName];
+
+				if (is_array($param)) {
+					foreach ($param as $key => $value) {
+						$curBtn = str_replace("<<$key>>", $value, $curBtn);
+					}
+				} else {
+					$curBtn = str_replace('<<url>>', $param, $curBtn);
+				}
+
+				$stringButton .= $curBtn;
 			}
 
 			return $stringButton;
