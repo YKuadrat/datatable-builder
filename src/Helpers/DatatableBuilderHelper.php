@@ -24,6 +24,7 @@ class DatatableBuilderHelper
 	private static function setupConfig($source, $config)
 	{
 		$defaultConfig = config('datatable-builder');
+		$data = $config;
 		$data['source'] = $source;
 		$data['elOptions'] = array_merge($defaultConfig['elOptions'], $config['elOptions'] ?? []);
 		$data['pluginOptions'] = array_merge($defaultConfig['pluginOptions'], $config['pluginOptions'] ?? []);
