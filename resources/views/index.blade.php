@@ -20,12 +20,12 @@
 @endsection
 
 <script type="text/javascript">
-	var dtColumns = [], dtOptions = {!! json_encode($pluginOptions) !!};
+	var dtColumns_{{ $elOptions['id'] }} = [], dtOptions_{{ $elOptions['id'] }} = {!! json_encode($pluginOptions) !!};
 
 
 	@foreach ($attributeColumns as $c)
 		@if (is_array($c))
-			dtColumns.push({!! json_encode($c) !!})
+			dtColumns_{{ $elOptions['id'] }}.push({!! json_encode($c) !!})
 		@else
 			var row = {
 				data: "{{ $c }}"
@@ -35,11 +35,11 @@
 			row.searchable = false
 			row.sortable = false
 			@endif
-			dtColumns.push(row)
+			dtColumns_{{ $elOptions['id'] }}.push(row)
 		@endif
 
 	@endforeach
-	dtOptions.columns = dtColumns;
+	dtOptions_{{ $elOptions['id'] }}.columns = dtColumns_{{ $elOptions['id'] }};
 
 
 
@@ -50,21 +50,21 @@
 		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		    }
 		});
-		dtOptions.processing = true;
-		dtOptions.serverSide = true;
-		dtOptions.ajax.url =  "{{ $source }}";
+		dtOptions_{{ $elOptions['id'] }}.processing = true;
+		dtOptions_{{ $elOptions['id'] }}.serverSide = true;
+		dtOptions_{{ $elOptions['id'] }}.ajax.url =  "{{ $source }}";
 
 
 		// FILTERS PARAMETER
-		dtOptions.ajax.data = {}
-		dtOptions.ajax.data.filters = {}
+		dtOptions_{{ $elOptions['id'] }}.ajax.data = {}
+		dtOptions_{{ $elOptions['id'] }}.ajax.data.filters = {}
 		@foreach ($filters ?? [] as $field => $val)
 
-			dtOptions.ajax.data.filters.{{$field}} = {!! $val !!}
+			dtOptions_{{ $elOptions['id'] }}.ajax.data.filters.{{$field}} = {!! $val !!}
 			@if (ends_with($val, '.val()' ))
 				<?php $el = str_replace('.val()', '', $val) ?>
 				{!! $el !!}.on('change', function(event) {
-					dtOptions.ajax.data.filters.{{$field}} = $(this).val()
+					dtOptions_{{ $elOptions['id'] }}.ajax.data.filters.{{$field}} = $(this).val()
 				});
 			@endif
 
@@ -72,16 +72,16 @@
 
 	@else
 
-		delete dtOptions.ajax;
+		delete dtOptions_{{ $elOptions['id'] }}.ajax;
 
 	@endif
 
 
 
-	console.log(dtOptions)
+	console.log(dtOptions_{{ $elOptions['id'] }})
 
 	var dataTableInit_{{ $elOptions['id'] }} = function() {
-		$('#{{ $elOptions['id'] }}').DataTable(dtOptions);
+		$('#{{ $elOptions['id'] }}').DataTable(dtOptions_{{ $elOptions['id'] }});
 	}
 
 	var dataTableFilter_{{ $elOptions['id'] }} = function(){
