@@ -24,16 +24,20 @@
 
 
 	@foreach ($attributeColumns as $c)
-		var row = {
-			data: "{{ $c }}"
-		}
+		@if (is_array($c))
+			dtColumns.push({!! json_encode($c) !!})
+		@else
+			var row = {
+				data: "{{ $c }}"
+			}
 
-		@if ($c == 'action')
-		row.searchable = false
-		row.sortable = false
+			@if ($c == 'action')
+			row.searchable = false
+			row.sortable = false
+			@endif
+			dtColumns.push(row)
 		@endif
 
-		dtColumns.push(row)
 	@endforeach
 	dtOptions.columns = dtColumns;
 

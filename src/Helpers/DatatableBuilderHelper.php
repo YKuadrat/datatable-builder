@@ -46,8 +46,8 @@ class DatatableBuilderHelper
 		$data['headerColumns'] = [];
 		$data['attributeColumns'] = [];
 		foreach ($columns as $column) {
-			$data['headerColumns'][] = str_replace('.', '_', strtolower(is_array($column) ? $column['label'] : $column));
-			$data['attributeColumns'][] = strtolower(is_array($column) ? $column['attribute'] : $column);
+			$data['headerColumns'][] = str_replace('.', '_', strtolower($column['label'] ?? $column));
+			$data['attributeColumns'][] = $column['attribute'] ?? $column;
 		}
 
 		return $data;
