@@ -20,7 +20,7 @@
 @endsection
 
 <script type="text/javascript">
-	var dtColumns_{{ $elOptions['id'] }} = [], dtOptions_{{ $elOptions['id'] }} = {!! json_encode($pluginOptions) !!};
+	var dtColumns_{{ $elOptions['id'] }} = [], dtOptions_{{ $elOptions['id'] }} = {!! json_encode($pluginOptions) !!}, dt_{{ $elOptions['id'] }};
 
 
 	@foreach ($attributeColumns as $c)
@@ -81,7 +81,7 @@
 	console.log(dtOptions_{{ $elOptions['id'] }})
 
 	var dataTableInit_{{ $elOptions['id'] }} = function() {
-		$('#{{ $elOptions['id'] }}').DataTable(dtOptions_{{ $elOptions['id'] }});
+		dataTable_{{ $elOptions['id'] }} = $('#{{ $elOptions['id'] }}').DataTable(dtOptions_{{ $elOptions['id'] }});
 	}
 
 	var dataTableFilter_{{ $elOptions['id'] }} = function(){
@@ -89,6 +89,15 @@
         $('#{{ $elOptions['id'] }}').DataTable().destroy();
         
 		dataTableInit_{{ $elOptions['id'] }}()
+	}
+
+	var dataTableReload_{{ $elOptions['id'] }} = function(){
+		var scrollingContainer = $("#{{ $elOptions['id'] }}").parent('div.dataTables_scrollBody');
+		var scrollTop = scrollingContainer.scrollTop();
+
+		dataTable_{{ $elOptions['id'] }}.ajax.reload(function() {
+			scrollingContainer.scrollTop(scrollTop);
+		}, false);
 	}
 
 	$(document).ready(function() {
