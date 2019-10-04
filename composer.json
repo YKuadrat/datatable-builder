@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "yajra/laravel-datatables-oracle": "8.*"
+        "yajra/laravel-datatables-oracle": "9.*"
     },
     "autoload": {
         "psr-4": {
@@ -19,7 +19,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "laravel-6": "1.0.0"
         },
         "laravel": {
             "providers": [
