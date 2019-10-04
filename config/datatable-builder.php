@@ -12,6 +12,7 @@ return [
 	],
 	'buttonTemplates' => [
 		'edit' => '<a href="<<url>>" class="btn btn-primary" title="Edit details"> Edit </a>',
-		'delete' => '<a href="<<url>>" class="btn btn-danger" title="Delete"> Delete </a>'
+		'delete' => '<a href="<<url>>" class="btn btn-danger" title="Delete"> Delete </a>',
+		'view' => '<a href="<<url>>" class="btn btn-success" title="View"> View </a>'
 	]
 ];
