@@ -2,7 +2,11 @@
 	<thead>
 		<tr>
 			@foreach ($headerColumns as $column)
-			<th>{{ ucwords(str_replace('_', ' ', $column)) }}</th>
+				@if ($column['rawLabel'])
+					<th>{!! $column['label'] !!}</th>
+				@else
+					<th>{{ ucwords(str_replace('_', ' ', $column['label'])) }}</th>
+				@endif
 			@endforeach
 		</tr>
 	</thead>
